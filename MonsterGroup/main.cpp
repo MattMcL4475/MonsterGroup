@@ -16,7 +16,7 @@ const size_t N = 196883;
 // Ubuntu Server 22.04 LTS - Gen2
 // x64
 // 0.6464 USD / hr
-// 1.  sudo apt update && sudo apt install g++
+// 1.  sudo apt update && sudo apt install g++ -y
 // 2.  nano monster.cpp (copy this file in)
 // 3.  g++ -o monster monster.cpp
 // 4.  ./monster
@@ -168,7 +168,7 @@ void initializeAndMultiplyMatrices(std::vector<std::thread>& threads, unsigned i
 int main()
 {
     // Calculate the memory needed in GiB
-    double memNeeded = N * sizeof(std::complex<double>) / (1024.0 * 1024.0 * 1024.0);
+    double memNeeded = N * N * sizeof(std::complex<double>) / (1024.0 * 1024.0 * 1024.0);
     double totalSystemMemGiB = getSystemMemory();
 
     std::cout << "Memory required: " << memNeeded << " GiB; Available: " << totalSystemMemGiB << " GiB.\n";
