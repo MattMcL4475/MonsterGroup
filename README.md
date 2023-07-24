@@ -1,6 +1,6 @@
 # In-memory Monster Group
 
-This code allocates a 196,883 x 196,833 matrix on Linux, which requires 577.612 GiB of memory:
+This code allocates a 196,883 x 196,833 matrix of complex numbers on Linux, which requires 577.612 GiB of memory:
 
 ```c++
 std::vector<std::vector<std::complex<double>>> matrix(196883, std::vector<std::complex<double>>(196883));
