@@ -10,7 +10,8 @@
 #include <string>
 #include <iomanip>
 
-const size_t N = 196883;
+//const size_t N = 196883;
+const size_t N = 100;
 
 //dev@mattmcl - linux:~$ . / monster
 //Start Execution time : 0d 0h 0m 0s
