@@ -1,4 +1,4 @@
-# In-memory Monster Group
+# In-memory monster group
 
 This code allocates a 196,883 x 196,833 matrix of complex numbers on Linux, which requires 577.612 GiB of memory:
 
