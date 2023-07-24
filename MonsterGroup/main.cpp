@@ -8,8 +8,8 @@
 #include <ctime>
 #include <fstream>
 #include <string>
-#include <iomanip> // For setw and setfill
-//const size_t N = 25905;
+#include <iomanip>
+
 const size_t N = 196883;
 
 //dev@mattmcl - linux:~$ . / monster
@@ -131,41 +131,11 @@ void multiplyMatrices(std::vector<std::vector<std::complex<double>>>& matrixA, s
     }
 }
 
-int main()
+// initializeAndMultiplyMatrices(threads, numThreads, rowsPerThread, seed, start, matrixA);
+
+void initializeAndMultiplyMatrices(std::vector<std::thread>& threads, unsigned int numThreads, const size_t& rowsPerThread, unsigned int seed, std::chrono::_V2::system_clock::time_point& start, std::vector<std::vector<std::complex<double>>>& matrixA)
 {
-    // Calculate the memory needed in GiB
-    double memNeeded = 2.0 * N * N * sizeof(std::complex<double>) / (1024.0 * 1024.0 * 1024.0);
-    double totalSystemMemGiB = getSystemMemory();
-
-    if (memNeeded > totalSystemMemGiB) {
-        std::cout << "Insufficient memory. Required: " << memNeeded
-            << " GiB, Available: " << totalSystemMemGiB << " GiB.\n";
-        return 1; // exit with non-zero status to indicate error
-    }
-
-    auto start = std::chrono::system_clock::now();
-    printExecutionTime(start, "Start");
-
-    // Create two matrices and fill with random values
-    std::vector<std::vector<std::complex<double>>> matrixA(N, std::vector<std::complex<double>>(N));
     std::vector<std::vector<std::complex<double>>> matrixB(N, std::vector<std::complex<double>>(N));
-
-    printExecutionTime(start, "Memory allocation for 2 x " + std::to_string(N) + "x" + std::to_string(N) + " matrices");
-    unsigned int numThreads = std::thread::hardware_concurrency();
-    std::vector<std::thread> threads(numThreads);
-    size_t rowsPerThread = N / numThreads;
-    unsigned seed = time(nullptr);
-
-    // Fill matrixA
-    for (size_t i = 0; i < numThreads; ++i)
-    {
-        size_t startRow = i * rowsPerThread;
-        size_t endRow = (i == (numThreads - 1)) ? N : (startRow + rowsPerThread);
-        threads[i] = std::thread(fillMatrix, std::ref(matrixA), startRow, endRow, seed + i);
-    }
-
-    for (auto& th : threads) th.join(); // Ensure all threads finish
-    printExecutionTime(start, "MatrixA filled");
     size_t multiplicationStepCount = 1000;
 
     for (size_t multiplicationStep = 0; multiplicationStep < multiplicationStepCount; ++multiplicationStep)
@@ -192,5 +162,41 @@ int main()
         for (auto& th : threads) th.join(); // Ensure all threads finish
         printExecutionTime(start, "Matrices multiplied [" + std::to_string(multiplicationStep + 1) + " of " + std::to_string(multiplicationStepCount) + "]");
     }
+}
+
+int main()
+{
+    // Calculate the memory needed in GiB
+    double memNeeded = 2.0 * N * N * sizeof(std::complex<double>) / (1024.0 * 1024.0 * 1024.0);
+    double totalSystemMemGiB = getSystemMemory();
+
+    if (memNeeded > totalSystemMemGiB) {
+        std::cout << "Insufficient memory. Required: " << memNeeded
+            << " GiB, Available: " << totalSystemMemGiB << " GiB.\n";
+        return 1; // exit with non-zero status to indicate error
+    }
+
+    auto start = std::chrono::system_clock::now();
+    printExecutionTime(start, "Start");
+
+    // Create matrix and fill with random values
+    std::vector<std::vector<std::complex<double>>> matrixA(N, std::vector<std::complex<double>>(N));
+    printExecutionTime(start, "Memory allocation for " + std::to_string(N) + "x" + std::to_string(N) + " matrix");
+
+    unsigned int numThreads = std::thread::hardware_concurrency();
+    std::vector<std::thread> threads(numThreads);
+    size_t rowsPerThread = N / numThreads;
+    unsigned seed = time(nullptr);
+
+    // Fill matrixA
+    for (size_t i = 0; i < numThreads; ++i)
+    {
+        size_t startRow = i * rowsPerThread;
+        size_t endRow = (i == (numThreads - 1)) ? N : (startRow + rowsPerThread);
+        threads[i] = std::thread(fillMatrix, std::ref(matrixA), startRow, endRow, seed + i);
+    }
+
+    for (auto& th : threads) th.join(); // Ensure all threads finish
+    printExecutionTime(start, "MatrixA filled");
 }
 
