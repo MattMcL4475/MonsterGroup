@@ -10,7 +10,7 @@ This code allocates a 196,883 x 196,833 matrix on Linux, which requires 577.612 
 - **Spot price**: $0.6464 / hr
 
 ## Compile & run instructions:
-
+*Use the code from: https://github.com/MattMcL4475/MonsterGroup/blob/master/MonsterGroup/main.cpp*
 - sudo apt update && sudo apt install g++ -y
 - nano monster.cpp
 - g++ -o monster monster.cpp
