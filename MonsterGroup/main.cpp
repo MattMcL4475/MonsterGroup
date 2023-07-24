@@ -12,14 +12,24 @@
 
 const size_t N = 196883;
 
-// Standard E96 - 24ads v5(24 vcpus, 672 GiB memory)
-// Ubuntu Server 22.04 LTS - Gen2
-// x64
-// 0.6464 USD / hr
+// Instructions:
 // 1.  sudo apt update && sudo apt install g++ -y
 // 2.  nano monster.cpp (copy this file in)
 // 3.  g++ -o monster monster.cpp
 // 4.  ./monster
+ 
+// Running on Azure:
+// SKU: Standard E96 - 24ads v5(24 vcpus, 672 GiB memory)
+// OS: Ubuntu Server 22.04 LTS - Gen2
+// Architecture: x64
+// Spot price: $0.6464 / hr
+
+// Result:
+// Memory required : 577.612 GiB; Available: 660.961 GiB.
+// Start execution time :
+// Memory usage : 0.00196838 GiB / 660.961 GiB(total)
+// Memory allocation for 196883x196883 matrix execution time : 9m 30s 005ms
+// Memory usage : 577.854 GiB / 660.961 GiB(total)
 
 double getSystemMemory()
 {
