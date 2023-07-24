@@ -10,16 +10,16 @@
 #include <string>
 #include <iomanip>
 
-//const size_t N = 196883;
-const size_t N = 100;
+const size_t N = 196883;
 
-//dev@mattmcl - linux:~$ . / monster
-//Start Execution time : 0d 0h 0m 0s
-//Memory usage : 0.00186157 GiB / 660.961 GiB(total)
-//Matrix initialization Execution time : 0d 0h 8m 55s
-//Memory usage : 577.854 GiB / 660.961 GiB(total)
-//Matrix fill Execution time : 0d 0h 3m 57s
-//Memory usage : 577.854 GiB / 660.961 GiB(total)
+// Standard E96 - 24ads v5(24 vcpus, 672 GiB memory)
+// Ubuntu Server 22.04 LTS - Gen2
+// x64
+// 0.6464 USD / hr
+// 1.  sudo apt update && sudo apt install g++
+// 2.  nano monster.cpp (copy this file in)
+// 3.  g++ -o monster monster.cpp
+// 4.  ./monster
 
 double getSystemMemory()
 {
@@ -168,8 +168,10 @@ void initializeAndMultiplyMatrices(std::vector<std::thread>& threads, unsigned i
 int main()
 {
     // Calculate the memory needed in GiB
-    double memNeeded = 2.0 * N * N * sizeof(std::complex<double>) / (1024.0 * 1024.0 * 1024.0);
+    double memNeeded = N * sizeof(std::complex<double>) / (1024.0 * 1024.0 * 1024.0);
     double totalSystemMemGiB = getSystemMemory();
+
+    std::cout << "Memory required: " << memNeeded << " GiB; Available: " << totalSystemMemGiB << " GiB.\n";
 
     if (memNeeded > totalSystemMemGiB) {
         std::cout << "Insufficient memory. Required: " << memNeeded
