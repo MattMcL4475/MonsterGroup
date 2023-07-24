@@ -1,6 +1,6 @@
 # In-memory Monster Group
 
-This code allocates a 196,883 x 196,833 matrix on Linux, which requires 577.612 GiB of memory. The matrix represents a linear transformation associated with an element of the Monster Group in its 196,883-dimensional representation. At present, the code simply fills the matrix with random complex numbers.
+This code allocates a 196,883 x 196,833 matrix on Linux, which requires 577.612 GiB of memory. The matrix represents a linear transformation associated with an element of the Monster Group in its 196,883-dimensional representation. Currently the code simply fills the matrix with random complex numbers.
 
 ## Running on Azure
 
