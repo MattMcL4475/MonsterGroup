@@ -4,7 +4,7 @@ This code allocates a 196,883 x 196,833 matrix on Linux, which requires 577.612 
 
 ## Running on Azure
 
-- **SKU**: Standard E96 - 24ads v5 (24 vcpus, 672 GiB memory)
+- **SKU**: Standard_E96-24ads_v5 (24 vcpus, 672 GiB memory)
 - **OS**: Ubuntu Server 22.04 LTS - Gen2
 - **Architecture**: x64
 - **Spot price**: $0.6464 / hr
