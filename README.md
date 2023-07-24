@@ -17,7 +17,7 @@ This code allocates a 196,883 x 196,833 matrix on Linux, which requires 577.612 
 
 ## Instructions:
 - sudo apt update && sudo apt install g++ -y
-- nano monster.cpp (copy this file in)
+- nano monster.cpp
 - g++ -o monster monster.cpp
 - ./monster
  
