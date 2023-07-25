@@ -8,7 +8,7 @@ CXXFLAGS = -std=c++11 -Wall -Wextra -pthread
 OBJS = avx512.o main.o matrix.o monster.o utility.o
 
 # Specify the output file name
-OUTFILE = MonsterGroup
+OUTFILE = monster
 
 # Default target
 all: $(OUTFILE)
