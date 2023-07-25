@@ -7,7 +7,7 @@
 #include "matrix.h"
 
 //const size_t N = 196883;
-const size_t N = 10000;
+const size_t N = 20000;
 
 int main()
 {
