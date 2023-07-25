@@ -14,22 +14,22 @@ OUTFILE = MonsterGroup
 all: $(OUTFILE)
 
 $(OUTFILE): $(OBJS)
-    $(CXX) -o $(OUTFILE) $(OBJS)
+	$(CXX) -o $(OUTFILE) $(OBJS)
 
 avx512.o: avx512.cpp avx512.h
-    $(CXX) $(CXXFLAGS) -c avx512.cpp
+	$(CXX) $(CXXFLAGS) -c avx512.cpp
 
 main.o: main.cpp
-    $(CXX) $(CXXFLAGS) -c main.cpp
+	$(CXX) $(CXXFLAGS) -c main.cpp
 
 matrix.o: matrix.cpp matrix.h
-    $(CXX) $(CXXFLAGS) -c matrix.cpp
+	$(CXX) $(CXXFLAGS) -c matrix.cpp
 
 monster.o: monster.cpp
-    $(CXX) $(CXXFLAGS) -c monster.cpp
+	$(CXX) $(CXXFLAGS) -c monster.cpp
 
 utility.o: utility.cpp utility.h
-    $(CXX) $(CXXFLAGS) -c utility.cpp
+	$(CXX) $(CXXFLAGS) -c utility.cpp
 
 clean:
-    rm -f $(OUTFILE) $(OBJS)
+	rm -f $(OUTFILE) $(OBJS)
