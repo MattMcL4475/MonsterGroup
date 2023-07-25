@@ -14,7 +14,7 @@ OUTFILE = MonsterGroup
 all: $(OUTFILE)
 
 $(OUTFILE): $(OBJS)
-	$(CXX) -o $(OUTFILE) $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $(OUTFILE) $(OBJS) -lpthread
 
 avx512.o: avx512.cpp avx512.h
 	$(CXX) $(CXXFLAGS) -c avx512.cpp
