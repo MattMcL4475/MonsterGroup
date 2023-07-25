@@ -5,7 +5,7 @@ This code allocates a 196,883 x 196,833 matrix of complex numbers on Linux, whic
 ```c++
 std::vector<std::vector<std::complex<double>>> matrix(196883, std::vector<std::complex<double>>(196883));
 ```
-The matrix represents a linear transformation associated with an element of the monster group in its 196,883-dimensional representation. Currently the code simply fills the matrix with random complex numbers.
+The matrix represents a linear transformation associated with an element of the monster group in its 196,883-dimensional representation. Currently the code fills the matrix with random complex numbers.
 
 ## Running on Azure
 
@@ -15,10 +15,10 @@ The matrix represents a linear transformation associated with an element of the 
 - **Spot price**: $0.6464 / hr
 
 ## Compile & run instructions:
-*Use the code from: https://github.com/MattMcL4475/MonsterGroup/blob/master/MonsterGroup/main.cpp*
-- sudo apt update && sudo apt install g++ -y
-- nano monster.cpp
-- g++ -o monster monster.cpp
+- sudo apt update && sudo apt install g++ make -y
+- git clone https://github.com/MattMcL4475/MonsterGroup.git
+- cd MonsterGroup/MonsterGroup
+- make
 - ./monster
 
 ## Result
