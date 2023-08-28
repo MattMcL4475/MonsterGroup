@@ -50,7 +50,7 @@ Platform-specific implementations for both Linux and Windows.
 ## Reference
 "It's got too many properties for it to be an accident.  It's never been explained why it's even there" -[John Horton Conway FRS](https://en.wikipedia.org/wiki/John_Horton_Conway) (26 December 1937 – 11 April 2020)
 
-**Monster group**: _https://en.wikipedia.org/wiki/Monster_group_
+**Monster group**: https://en.wikipedia.org/wiki/Monster_group
 
 **Monsterous moonshine**: https://en.wikipedia.org/wiki/Monstrous_moonshine
 
